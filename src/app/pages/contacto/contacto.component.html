@@ -85,7 +85,26 @@
 
         <!-- Fecha y Horario -->
         <div class="border-b border-gray-200 pb-6 mb-6">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Fecha y Horario</h3>
+          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Fecha y Horario</h3>
+          
+          <!-- Información de horarios de atención -->
+          <div class="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-blue-900 mb-2">Horarios de Atención</h4>
+                <div class="text-sm text-blue-800 space-y-1">
+                  <p><strong>Mar-Mié-Jue-Vie:</strong> 8:00-12:00 y 15:00-19:00</p>
+                  <p><strong>Sábados:</strong> 8:00-15:00</p>
+                  <p class="text-blue-600 font-medium">📝 Domingos y lunes cerrado</p>
+                </div>
+              </div>
+            </div>
+          </div>
           
           <!-- Fecha con Angular Material DatePicker -->
           <div class="form-field">
@@ -119,9 +138,10 @@
                     </svg>
                   </div>
                 </div>
-                <div>
+                <div class="flex-grow">
                   <p class="text-sm font-medium text-green-800">¡Fecha seleccionada!</p>
                   <p class="text-lg font-bold text-green-900">{{ getFormattedDateForDisplay() }}</p>
+                  <p class="text-sm text-green-700 mt-1">📅 {{ getHorarioInfo() }}</p>
                 </div>
               </div>
             </div>

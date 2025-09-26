@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupabaseService, Reserva } from '../../services/supabase.service';
 
@@ -7,11 +7,15 @@ import { SupabaseService, Reserva } from '../../services/supabase.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+
+// Registrar locale español
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'app-contacto',
@@ -28,10 +32,27 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatIconModule
   ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MAT_DATE_FORMATS, useValue: {
+        parse: {
+          dateInput: 'DD/MM/YYYY'
+        },
+        display: {
+          dateInput: 'DD/MM/YYYY',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'DD/MM/YYYY',
+          monthYearA11yLabel: 'MMMM YYYY'
+        }
+      }
+    }
+  ],
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.scss']
 })
-export class ContactPageComponent implements OnInit {
+export class ContactPageComponent implements OnInit, AfterViewInit {
+  @ViewChild('picker') picker: any;
+  
   reservaForm: FormGroup;
   horariosDisponibles: string[] = [];
   horariosOcupados: string[] = [];
@@ -46,15 +67,34 @@ export class ContactPageComponent implements OnInit {
     { value: 'unisex-color', label: 'Unisex & Color', precio: '$30' },
   ];
 
-  horarios = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30', '18:00', '18:30'
-  ];
+  // Horarios por día de la semana (0 = Domingo, 1 = Lunes, 2 = Martes, etc.)
+  horariosPorDia: { [key: number]: string[] } = {
+    2: [ // Martes
+      '08:00', '09:00', '10:00', '11:00', '12:00',
+      '15:00', '16:00', '17:00', '18:00', '19:00'
+    ],
+    3: [ // Miércoles
+      '08:00', '09:00', '10:00', '11:00', '12:00',
+      '15:00', '16:00', '17:00', '18:00', '19:00'
+    ],
+    4: [ // Jueves
+      '08:00', '09:00', '10:00', '11:00', '12:00',
+      '15:00', '16:00', '17:00', '18:00', '19:00'
+    ],
+    5: [ // Viernes
+      '08:00', '09:00', '10:00', '11:00', '12:00',
+      '15:00', '16:00', '17:00', '18:00', '19:00'
+    ],
+    6: [ // Sábado
+      '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'
+    ]
+  };
+
+  horarios: string[] = []; // Se llenará dinámicamente según el día seleccionado
 
   selectedTime = '';
 
-  constructor(private fb: FormBuilder, private supabaseService: SupabaseService) {
+  constructor(private fb: FormBuilder, private supabaseService: SupabaseService, private dateAdapter: DateAdapter<Date>) {
     this.reservaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
@@ -63,6 +103,9 @@ export class ContactPageComponent implements OnInit {
       fecha: [null, Validators.required], // Cambiar a null para Material DatePicker
       comentarios: ['']
     });
+    
+    // Configurar el locale del DateAdapter
+    this.dateAdapter.setLocale('es-ES');
   }
 
   ngOnInit() {
@@ -83,21 +126,68 @@ export class ContactPageComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    // Actualizar el mes mostrado cuando se abre el calendario
+    this.updateCalendarMonth();
+  }
+
+  updateCalendarMonth(selectedDate?: Date) {
+    setTimeout(() => {
+      const dateToUse = selectedDate || new Date();
+      const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+      const currentMonth = monthNames[dateToUse.getMonth()];
+      
+      // Actualizar el CSS con el mes actual
+      const existingStyle = document.querySelector('#calendar-month-style');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
+      
+      const style = document.createElement('style');
+      style.id = 'calendar-month-style';
+      style.textContent = `
+        ::ng-deep .mat-calendar-header::before {
+          content: '${currentMonth}' !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }, 100);
+  }
+
   async updateHorariosDisponibles(fecha?: string) {
     if (!fecha) {
-      this.horariosDisponibles = [...this.horarios];
+      this.horariosDisponibles = [];
       this.horariosOcupados = [];
+      this.horarios = [];
       return;
     }
 
     try {
+      // Crear objeto Date y obtener el día de la semana
+      const fechaObj = new Date(fecha + 'T00:00:00'); // Agregar tiempo para evitar problemas de zona horaria
+      const diaSemana = fechaObj.getDay();
+      
+      // Obtener horarios para este día específico
+      this.horarios = this.horariosPorDia[diaSemana] || [];
+      
+      if (this.horarios.length === 0) {
+        // Si no hay horarios para este día, está cerrado
+        this.horariosDisponibles = [];
+        this.horariosOcupados = [];
+        return;
+      }
+
+      // Obtener horarios ocupados de la base de datos
       this.horariosOcupados = await this.supabaseService.obtenerHorariosOcupados(fecha);
+      
+      // Filtrar horarios disponibles
       this.horariosDisponibles = this.horarios.filter(horario => 
         !this.horariosOcupados.includes(horario)
       );
     } catch (error) {
       console.error('Error actualizando horarios:', error);
-      this.horariosDisponibles = [...this.horarios];
+      this.horariosDisponibles = [];
+      this.horarios = [];
     }
   }
 
@@ -154,26 +244,39 @@ export class ContactPageComponent implements OnInit {
     return maxDate;
   }
 
-  // Filtro para deshabilitar días (opcional - por ejemplo deshabilitar domingos)
+  // Filtro para deshabilitar días (deshabilitar lunes y domingos)
   dateFilter = (date: Date | null): boolean => {
     if (!date) return false;
     const day = date.getDay();
-    // Puedes personalizar esto para deshabilitar días específicos
-    // Por ahora permitimos todos los días
-    return true;
+    // Permitir solo martes (2), miércoles (3), jueves (4), viernes (5) y sábado (6)
+    return day >= 2 && day <= 6;
   }
 
   // Método para manejar cambios en la fecha de Material
   onMaterialDateChange(event: any) {
     const fecha = event.value;
     if (fecha) {
-      this.fechaSeleccionada = true;
-      // Convertir Date a string formato YYYY-MM-DD para compatibilidad
-      const fechaString = fecha.toISOString().split('T')[0];
-      this.updateHorariosDisponibles(fechaString);
-      this.selectedTime = ''; // Limpiar horario seleccionado
+      const diaSemana = fecha.getDay();
+      
+      // Actualizar el mes mostrado
+      this.updateCalendarMonth(fecha);
+      
+      // Verificar si es un día válido (martes a sábado)
+      if (this.horariosPorDia[diaSemana] && this.horariosPorDia[diaSemana].length > 0) {
+        this.fechaSeleccionada = true;
+        // Convertir Date a string formato YYYY-MM-DD para compatibilidad
+        const fechaString = fecha.toISOString().split('T')[0];
+        this.updateHorariosDisponibles(fechaString);
+        this.selectedTime = ''; // Limpiar horario seleccionado
+      } else {
+        this.fechaSeleccionada = false;
+        this.horariosDisponibles = [];
+        this.horarios = [];
+      }
     } else {
       this.fechaSeleccionada = false;
+      this.horariosDisponibles = [];
+      this.horarios = [];
     }
   }
 
@@ -211,13 +314,23 @@ export class ContactPageComponent implements OnInit {
           const maxDate = this.getMaxDateForMaterial();
           
           if (fecha >= minDate && fecha <= maxDate) {
-            this.fechaSeleccionada = true;
-            const fechaString = fecha.toISOString().split('T')[0];
-            this.updateHorariosDisponibles(fechaString);
-            this.selectedTime = ''; // Limpiar horario seleccionado
+            const diaSemana = fecha.getDay();
             
-            // Actualizar el valor del formulario con la fecha parseada
-            this.reservaForm.patchValue({ fecha: fecha });
+            // Verificar si es un día de trabajo (martes a sábado)
+            if (this.horariosPorDia[diaSemana] && this.horariosPorDia[diaSemana].length > 0) {
+              this.fechaSeleccionada = true;
+              const fechaString = fecha.toISOString().split('T')[0];
+              this.updateHorariosDisponibles(fechaString);
+              this.selectedTime = ''; // Limpiar horario seleccionado
+              
+              // Actualizar el valor del formulario con la fecha parseada
+              this.reservaForm.patchValue({ fecha: fecha });
+            } else {
+              this.fechaSeleccionada = false;
+              this.horariosDisponibles = [];
+              this.horarios = [];
+              console.log('Día no disponible - Solo trabajamos martes a sábado');
+            }
           } else {
             this.fechaSeleccionada = false;
             console.log('Fecha fuera del rango permitido');
@@ -231,6 +344,8 @@ export class ContactPageComponent implements OnInit {
       }
     } else {
       this.fechaSeleccionada = false;
+      this.horariosDisponibles = [];
+      this.horarios = [];
     }
   }
 
@@ -377,6 +492,29 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
         month: 'long',
         day: 'numeric'
       });
+    }
+    return '';
+  }
+
+  // Método para obtener información del horario del día seleccionado
+  getHorarioInfo(): string {
+    const fecha = this.reservaForm.get('fecha')?.value;
+    if (fecha && fecha instanceof Date) {
+      const diaSemana = fecha.getDay();
+      const nombresDias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+      const nombreDia = nombresDias[diaSemana];
+      
+      switch (diaSemana) {
+        case 2: // Martes
+        case 3: // Miércoles  
+        case 4: // Jueves
+        case 5: // Viernes
+          return `${nombreDia}: 8:00-12:00 y 15:00-19:00`;
+        case 6: // Sábado
+          return `${nombreDia}: 8:00-15:00`;
+        default:
+          return 'Día no disponible';
+      }
     }
     return '';
   }
