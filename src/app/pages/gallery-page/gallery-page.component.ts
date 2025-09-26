@@ -5,7 +5,7 @@ selector: 'app-gallery-page',
 standalone: true,
 imports: [CommonModule],
 templateUrl: './gallery-page.component.html',
-styles: []
+styleUrls: ['./gallery-page.component.scss']
 })
 export class GalleryPageComponent {
 cuts = [

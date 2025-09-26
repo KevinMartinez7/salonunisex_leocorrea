@@ -9,6 +9,7 @@ import { FooterComponent } from '../../components/footer.component';
 selector: 'app-home-page',
 standalone: true,
 imports: [CarouselComponent, ServicesStripComponent, GalleryPageComponent],
-templateUrl: './home-page.component.html'
+templateUrl: './home-page.component.html',
+styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {}

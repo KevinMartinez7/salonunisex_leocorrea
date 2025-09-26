@@ -7,10 +7,7 @@ selector: 'app-carousel',
 standalone: true,
 imports: [NgFor, NgClass],
 templateUrl: './carousel.component.html',
-styles: [`
-.slide { @apply absolute inset-0 transition-opacity duration-700 ease-in-out; }
-.dot { @apply h-2 w-2 rounded-full border border-white; }
-`]
+styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
 images = [

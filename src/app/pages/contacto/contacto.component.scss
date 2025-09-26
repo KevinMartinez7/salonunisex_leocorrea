@@ -1,0 +1,198 @@
+.form-field {
+  @apply mb-6;
+}
+
+.form-label {
+  @apply block mb-2 text-lg font-medium text-gray-800;
+}
+
+.form-input {
+  @apply w-full border-2 border-gray-300 rounded-xl p-4 text-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200;
+}
+
+.form-select {
+  @apply w-full border-2 border-gray-300 rounded-xl p-4 text-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200 bg-white;
+}
+
+.form-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-blue-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed w-full sm:w-auto;
+}
+
+.time-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3;
+}
+
+.time-button {
+  @apply border-2 border-gray-300 rounded-lg p-3 text-center cursor-pointer transition-all duration-200 hover:border-blue-500 hover:bg-blue-50;
+}
+
+.time-button.selected {
+  @apply border-blue-500 bg-blue-100 text-blue-700;
+}
+
+.time-button.disabled {
+  @apply border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed;
+}
+
+/* Estilos personalizados para el calendario */
+.date-input-wrapper {
+  position: relative;
+}
+
+.custom-date-input {
+  @apply w-full border-2 border-gray-300 rounded-xl p-4 text-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200 bg-white cursor-pointer;
+  height: 60px;
+  font-size: 20px;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%233b82f6'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M6.75 3v2.25M17.25 3v2.25m3 8.25v7.5a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18.75v-7.5M3 9.75h18M8.25 13.5h7.5'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 28px;
+  padding-right: 55px;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+/* Hacer el indicador del calendario más clickeable */
+.custom-date-input::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  /* Esto hace que todo el campo sea clickeable para abrir el calendario */
+}
+
+/* Efectos hover para el campo completo */
+.custom-date-input:hover {
+  @apply border-blue-400 shadow-lg;
+  transform: scale(1.01);
+  background-size: 30px;
+}
+
+/* Hacer el calendario más grande cuando se abre */
+.custom-date-input:focus,
+.custom-date-input:active {
+  transform: scale(1.02);
+  @apply border-blue-500 ring-4 ring-blue-200 shadow-xl;
+  z-index: 1000;
+}
+
+/* Estilos para hacer los campos de fecha más grandes */
+.custom-date-input::-webkit-datetime-edit {
+  padding: 12px 8px;
+  font-size: 20px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+.custom-date-input::-webkit-datetime-edit-fields-wrapper {
+  padding: 8px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.custom-date-input::-webkit-datetime-edit-text {
+  color: #6b7280;
+  padding: 4px 6px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.custom-date-input::-webkit-datetime-edit-month-field,
+.custom-date-input::-webkit-datetime-edit-day-field,
+.custom-date-input::-webkit-datetime-edit-year-field {
+  background-color: transparent;
+  color: #1f2937;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 20px;
+  min-width: 50px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.custom-date-input::-webkit-datetime-edit-month-field:hover,
+.custom-date-input::-webkit-datetime-edit-day-field:hover,
+.custom-date-input::-webkit-datetime-edit-year-field:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.custom-date-input::-webkit-datetime-edit-month-field:focus,
+.custom-date-input::-webkit-datetime-edit-day-field:focus,
+.custom-date-input::-webkit-datetime-edit-year-field:focus {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Placeholder personalizado */
+.date-placeholder {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 18px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.custom-date-input:focus + .date-placeholder,
+.custom-date-input:not(:placeholder-shown) + .date-placeholder,
+.has-value .date-placeholder {
+  opacity: 0;
+  transform: translateY(-50%) scale(0.8);
+}
+
+/* Animación para cuando se selecciona una fecha */
+.date-selected {
+  @apply border-green-500 bg-green-50;
+  animation: selectedPulse 0.6s ease-out;
+}
+
+.date-selected .date-placeholder {
+  @apply text-green-600;
+}
+
+/* Indicador visual de fecha seleccionada */
+.date-selected::after {
+  content: '✓';
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #10b981;
+  font-weight: bold;
+  font-size: 22px;
+  animation: checkmark 0.5s ease-out;
+  z-index: 10;
+}
+
+@keyframes selectedPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes checkmark {
+  0% { opacity: 0; transform: translateY(-50%) scale(0.5); }
+  100% { opacity: 1; transform: translateY(-50%) scale(1); }
+}
