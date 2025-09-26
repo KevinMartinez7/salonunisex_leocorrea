@@ -1,11 +1,3 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-@Component({
-  selector: 'app-productos-page',
-  standalone: true,
-  imports: [CommonModule],
-  template: `
    <div class="flex flex-col min-h-screen">
   <div class="container mx-auto px-4 py-10">
     <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h2>
@@ -31,26 +23,3 @@ import { CommonModule } from '@angular/common';
     </div>
   </div>
   </div>
-  `,
-  styles: []
-})
-export class ProductosPageComponent {
-  products = [
-    { title: 'Pomada Mate', image: 'assets/productos/pomada-mate.jpg' },
-    { title: 'Cera Brillante', image: 'assets/productos/cera-brillante.jpg' },
-    { title: 'Shampoo para Barba', image: 'assets/productos/shampoo-barba.jpg' },
-    { title: 'Aceite para Barba', image: 'assets/productos/aceite-barba.jpg' },
-    { title: 'Peine Profesional', image: 'assets/productos/peine.jpg' },
-    { title: 'Navaja Clásica', image: 'assets/productos/navaja.jpg' }
-  ];
-
-  selectedProduct: any = null;
-
-  openModal(product: any) {
-    this.selectedProduct = product;
-  }
-
-  closeModal() {
-    this.selectedProduct = null;
-  }
-}

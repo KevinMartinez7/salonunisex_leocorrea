@@ -9,3 +9,139 @@ body { @apply bg-white text-neutral-900 antialiased; }
 .container { @apply mx-auto px-4 sm:px-6 lg:px-8; }
 .card { @apply bg-white rounded-2xl shadow-soft border border-neutral-200; }
 .btn { @apply inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 font-medium border border-neutral-300 hover:border-neutral-400 transition; }
+
+/* Estilos globales mejorados para calendarios nativos */
+input[type="date"] {
+  position: relative;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Mejorar el calendario en navegadores WebKit (Chrome, Edge, Safari) - MÁS GRANDE */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: none !important;
+  cursor: default !important;
+}
+
+/* Eliminar completamente los efectos hover del indicador */
+
+/* Estilos mejorados para los controles del calendario - MÁS GRANDES */
+input[type="date"]::-webkit-datetime-edit {
+  padding: 12px 16px !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  background: transparent !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  background: transparent !important;
+  padding: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: #6b7280 !important;
+  padding: 4px 8px !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  background: transparent !important;
+  color: #1f2937 !important;
+  font-weight: 700 !important;
+  padding: 10px 14px !important;
+  text-align: center !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  font-size: 20px !important;
+  min-width: 60px !important;
+  border: 2px solid transparent !important;
+  margin: 2px !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field:hover,
+input[type="date"]::-webkit-datetime-edit-day-field:hover,
+input[type="date"]::-webkit-datetime-edit-year-field:hover {
+  background-color: #f3f4f6 !important;
+  border-color: #d1d5db !important;
+  transform: scale(1.05) !important;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field:focus,
+input[type="date"]::-webkit-datetime-edit-day-field:focus,
+input[type="date"]::-webkit-datetime-edit-year-field:focus {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+  outline: none !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Mejorar la apariencia en Firefox */
+input[type="date"]::-moz-focus-inner {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+/* Estilos adicionales para mejor UX */
+input[type="date"]:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
+  border-color: #3b82f6 !important;
+  transform: scale(1.01) !important;
+}
+
+/* Estilos para mejorar la legibilidad en dispositivos móviles - AÚN MÁS GRANDES */
+@media (max-width: 768px) {
+  input[type="date"] {
+    font-size: 18px !important; /* Evita zoom en iOS */
+    min-height: 60px !important; /* Más grande para touch */
+    padding: 16px 20px !important;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit {
+    font-size: 22px !important;
+    padding: 14px 18px !important;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    font-size: 22px !important;
+    padding: 12px 16px !important;
+    min-width: 70px !important;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-text {
+    font-size: 22px !important;
+    padding: 6px 10px !important;
+  }
+  
+  /* Los indicadores ya están ocultos globalmente */
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  input[type="date"]::-webkit-datetime-edit {
+    font-size: 24px !important;
+  }
+  
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    font-size: 24px !important;
+    padding: 14px 18px !important;
+  }
+  
+  /* Los indicadores ya están ocultos globalmente */
+}
