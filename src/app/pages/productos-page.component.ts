@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-productos-page',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+   <div class="flex flex-col min-h-screen">
+  <div class="container mx-auto px-4 py-10">
+    <h2 class="text-3xl font-bold text-center mb-8">Nuestros Productos</h2>
+
+    <!-- Grid de productos -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div *ngFor="let product of products" class="relative group cursor-pointer" (click)="openModal(product)">
+        <img [src]="product.image" [alt]="product.title"
+          class="rounded-2xl shadow-md transition-transform duration-300 group-hover:scale-105">
+        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white text-center py-2 rounded-b-2xl">
+          {{ product.title }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div *ngIf="selectedProduct" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+      <div class="relative max-w-3xl w-full p-4">
+        <button class="absolute top-2 right-2 text-white text-3xl" (click)="closeModal()">&times;</button>
+        <img [src]="selectedProduct.image" [alt]="selectedProduct.title" class="rounded-2xl w-full shadow-lg">
+        <p class="text-white text-center mt-4 text-lg">{{ selectedProduct.title }}</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  `,
+  styles: []
+})
+export class ProductosPageComponent {
+  products = [
+    { title: 'Pomada Mate', image: 'assets/productos/pomada-mate.jpg' },
+    { title: 'Cera Brillante', image: 'assets/productos/cera-brillante.jpg' },
+    { title: 'Shampoo para Barba', image: 'assets/productos/shampoo-barba.jpg' },
+    { title: 'Aceite para Barba', image: 'assets/productos/aceite-barba.jpg' },
+    { title: 'Peine Profesional', image: 'assets/productos/peine.jpg' },
+    { title: 'Navaja Clásica', image: 'assets/productos/navaja.jpg' }
+  ];
+
+  selectedProduct: any = null;
+
+  openModal(product: any) {
+    this.selectedProduct = product;
+  }
+
+  closeModal() {
+    this.selectedProduct = null;
+  }
+}
