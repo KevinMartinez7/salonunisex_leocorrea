@@ -3,16 +3,6 @@ import { CommonModule, registerLocaleData } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupabaseService, Reserva } from '../../services/supabase.service';
 
-// Angular Material imports
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-
 // Registrar locale español
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs, 'es');
@@ -22,36 +12,12 @@ registerLocaleData(localeEs, 'es');
   standalone: true,
   imports: [
     CommonModule, 
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    MatIconModule
-  ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
-    { provide: MAT_DATE_FORMATS, useValue: {
-        parse: {
-          dateInput: 'DD/MM/YYYY'
-        },
-        display: {
-          dateInput: 'DD/MM/YYYY',
-          monthYearLabel: 'MMM YYYY',
-          dateA11yLabel: 'DD/MM/YYYY',
-          monthYearA11yLabel: 'MMMM YYYY'
-        }
-      }
-    }
+    ReactiveFormsModule
   ],
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.scss']
 })
 export class ContactPageComponent implements OnInit, AfterViewInit {
-  @ViewChild('picker') picker: any;
   
   reservaForm: FormGroup;
   horariosDisponibles: string[] = [];
@@ -94,23 +60,31 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
 
   selectedTime = '';
 
-  constructor(private fb: FormBuilder, private supabaseService: SupabaseService, private dateAdapter: DateAdapter<Date>) {
+  // Propiedades para calendario personalizado
+  currentDate = new Date();
+  selectedDate: Date | null = null;
+  calendarDays: any[] = [];
+  monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 
+               'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  weekdays = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+  constructor(private fb: FormBuilder, private supabaseService: SupabaseService) {
     this.reservaForm = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       email: ['', [Validators.required, Validators.email]],
       servicio: ['', Validators.required],
-      fecha: [null, Validators.required], // Cambiar a null para Material DatePicker
+      fecha: [null, Validators.required], // Para nuestro calendario personalizado
       comentarios: ['']
     });
-    
-    // Configurar el locale del DateAdapter
-    this.dateAdapter.setLocale('es-ES');
   }
 
   ngOnInit() {
     // Inicializar horarios disponibles
     this.updateHorariosDisponibles();
+    
+    // Inicializar calendario personalizado
+    this.generateCalendar();
     
     // Actualizar horarios cuando cambie la fecha
     this.reservaForm.get('fecha')?.valueChanges.subscribe(fecha => {
@@ -127,31 +101,7 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // Actualizar el mes mostrado cuando se abre el calendario
-    this.updateCalendarMonth();
-  }
-
-  updateCalendarMonth(selectedDate?: Date) {
-    setTimeout(() => {
-      const dateToUse = selectedDate || new Date();
-      const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
-      const currentMonth = monthNames[dateToUse.getMonth()];
-      
-      // Actualizar el CSS con el mes actual
-      const existingStyle = document.querySelector('#calendar-month-style');
-      if (existingStyle) {
-        existingStyle.remove();
-      }
-      
-      const style = document.createElement('style');
-      style.id = 'calendar-month-style';
-      style.textContent = `
-        ::ng-deep .mat-calendar-header::before {
-          content: '${currentMonth}' !important;
-        }
-      `;
-      document.head.appendChild(style);
-    }, 100);
+    // Ya no necesario para el calendario personalizado
   }
 
   async updateHorariosDisponibles(fecha?: string) {
@@ -231,122 +181,6 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
     const today = new Date();
     const maxDate = new Date(today.setMonth(today.getMonth() + 2));
     return maxDate.toISOString().split('T')[0];
-  }
-
-  // Métodos para Angular Material DatePicker
-  getMinDateForMaterial(): Date {
-    return new Date();
-  }
-
-  getMaxDateForMaterial(): Date {
-    const today = new Date();
-    const maxDate = new Date(today.setMonth(today.getMonth() + 2));
-    return maxDate;
-  }
-
-  // Filtro para deshabilitar días (deshabilitar lunes y domingos)
-  dateFilter = (date: Date | null): boolean => {
-    if (!date) return false;
-    const day = date.getDay();
-    // Permitir solo martes (2), miércoles (3), jueves (4), viernes (5) y sábado (6)
-    return day >= 2 && day <= 6;
-  }
-
-  // Método para manejar cambios en la fecha de Material
-  onMaterialDateChange(event: any) {
-    const fecha = event.value;
-    if (fecha) {
-      const diaSemana = fecha.getDay();
-      
-      // Actualizar el mes mostrado
-      this.updateCalendarMonth(fecha);
-      
-      // Verificar si es un día válido (martes a sábado)
-      if (this.horariosPorDia[diaSemana] && this.horariosPorDia[diaSemana].length > 0) {
-        this.fechaSeleccionada = true;
-        // Convertir Date a string formato YYYY-MM-DD para compatibilidad
-        const fechaString = fecha.toISOString().split('T')[0];
-        this.updateHorariosDisponibles(fechaString);
-        this.selectedTime = ''; // Limpiar horario seleccionado
-      } else {
-        this.fechaSeleccionada = false;
-        this.horariosDisponibles = [];
-        this.horarios = [];
-      }
-    } else {
-      this.fechaSeleccionada = false;
-      this.horariosDisponibles = [];
-      this.horarios = [];
-    }
-  }
-
-  // Método para manejar la entrada manual de fechas
-  onDateInput(event: any) {
-    const inputValue = event.target.value;
-    
-    // Si el usuario escribe manualmente, intentar parsear la fecha
-    if (inputValue && inputValue.length >= 8) {
-      try {
-        let fecha: Date;
-        
-        // Si tiene formato DD/MM/YYYY o DD-MM-YYYY, convertir a formato ISO
-        if (inputValue.includes('/') || inputValue.includes('-')) {
-          const separator = inputValue.includes('/') ? '/' : '-';
-          const parts = inputValue.split(separator);
-          
-          if (parts.length === 3) {
-            // Asumir formato DD/MM/YYYY
-            const day = parseInt(parts[0]);
-            const month = parseInt(parts[1]) - 1; // Los meses en JS empiezan en 0
-            const year = parseInt(parts[2]);
-            fecha = new Date(year, month, day);
-          } else {
-            fecha = new Date(inputValue);
-          }
-        } else {
-          fecha = new Date(inputValue);
-        }
-        
-        // Verificar si la fecha es válida
-        if (!isNaN(fecha.getTime())) {
-          // Verificar si está dentro del rango permitido
-          const minDate = this.getMinDateForMaterial();
-          const maxDate = this.getMaxDateForMaterial();
-          
-          if (fecha >= minDate && fecha <= maxDate) {
-            const diaSemana = fecha.getDay();
-            
-            // Verificar si es un día de trabajo (martes a sábado)
-            if (this.horariosPorDia[diaSemana] && this.horariosPorDia[diaSemana].length > 0) {
-              this.fechaSeleccionada = true;
-              const fechaString = fecha.toISOString().split('T')[0];
-              this.updateHorariosDisponibles(fechaString);
-              this.selectedTime = ''; // Limpiar horario seleccionado
-              
-              // Actualizar el valor del formulario con la fecha parseada
-              this.reservaForm.patchValue({ fecha: fecha });
-            } else {
-              this.fechaSeleccionada = false;
-              this.horariosDisponibles = [];
-              this.horarios = [];
-              console.log('Día no disponible - Solo trabajamos martes a sábado');
-            }
-          } else {
-            this.fechaSeleccionada = false;
-            console.log('Fecha fuera del rango permitido');
-          }
-        } else {
-          this.fechaSeleccionada = false;
-        }
-      } catch (error) {
-        this.fechaSeleccionada = false;
-        console.log('Error parseando fecha manual:', error);
-      }
-    } else {
-      this.fechaSeleccionada = false;
-      this.horariosDisponibles = [];
-      this.horarios = [];
-    }
   }
 
   async onSubmit() {
@@ -517,5 +351,110 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
       }
     }
     return '';
+  }
+
+  // === MÉTODOS PARA CALENDARIO PERSONALIZADO ===
+  
+  generateCalendar() {
+    const year = this.currentDate.getFullYear();
+    const month = this.currentDate.getMonth();
+    
+    // Primer día del mes
+    const firstDay = new Date(year, month, 1);
+    // Último día del mes
+    const lastDay = new Date(year, month + 1, 0);
+    
+    // Días del mes anterior para completar la primera semana
+    const startDate = new Date(firstDay);
+    startDate.setDate(startDate.getDate() - firstDay.getDay());
+    
+    // Días del mes siguiente para completar la última semana
+    const endDate = new Date(lastDay);
+    const remainingDays = 6 - lastDay.getDay();
+    endDate.setDate(endDate.getDate() + remainingDays);
+    
+    // Generar array de días
+    this.calendarDays = [];
+    const currentDateIterator = new Date(startDate);
+    
+    while (currentDateIterator <= endDate) {
+      const isCurrentMonth = currentDateIterator.getMonth() === month;
+      const isToday = this.isSameDate(currentDateIterator, new Date());
+      const isSelected = this.selectedDate && this.isSameDate(currentDateIterator, this.selectedDate);
+      const dayOfWeek = currentDateIterator.getDay();
+      const isDisabled = !this.isDateAvailable(currentDateIterator);
+      
+      this.calendarDays.push({
+        date: new Date(currentDateIterator),
+        day: currentDateIterator.getDate(),
+        isCurrentMonth,
+        isToday,
+        isSelected,
+        isDisabled,
+        hasEvents: this.hasEvents(currentDateIterator)
+      });
+      
+      currentDateIterator.setDate(currentDateIterator.getDate() + 1);
+    }
+  }
+  
+  isDateAvailable(date: Date): boolean {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    // No permitir fechas pasadas
+    if (date < today) return false;
+    
+    // No permitir fechas más de 2 meses en el futuro
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 2);
+    if (date > maxDate) return false;
+    
+    // Solo permitir días de trabajo (martes a sábado)
+    const dayOfWeek = date.getDay();
+    return dayOfWeek >= 2 && dayOfWeek <= 6;
+  }
+  
+  hasEvents(date: Date): boolean {
+    // Aquí puedes agregar lógica para mostrar eventos específicos
+    return false;
+  }
+  
+  isSameDate(date1: Date, date2: Date): boolean {
+    return date1.getFullYear() === date2.getFullYear() &&
+           date1.getMonth() === date2.getMonth() &&
+           date1.getDate() === date2.getDate();
+  }
+  
+  selectDate(day: any) {
+    if (day.isDisabled || !day.isCurrentMonth) return;
+    
+    this.selectedDate = new Date(day.date);
+    this.fechaSeleccionada = true;
+    
+    // Actualizar el formulario
+    this.reservaForm.patchValue({ fecha: this.selectedDate });
+    
+    // Actualizar horarios disponibles
+    const fechaString = this.selectedDate.toISOString().split('T')[0];
+    this.updateHorariosDisponibles(fechaString);
+    this.selectedTime = '';
+    
+    // Regenerar calendario para mostrar selección
+    this.generateCalendar();
+  }
+  
+  previousMonth() {
+    this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+    this.generateCalendar();
+  }
+  
+  nextMonth() {
+    this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+    this.generateCalendar();
+  }
+  
+  getCurrentMonthYear(): string {
+    return `${this.monthNames[this.currentDate.getMonth()]} de ${this.currentDate.getFullYear()}`;
   }
 }
