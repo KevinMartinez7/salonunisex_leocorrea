@@ -11,9 +11,14 @@ styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent {
 images = [
-'assets/cortes/hero-1.jpg',
-'assets/cortes/hero-2.jpg',
-'assets/cortes/hero-3.jpg'
+'assets/cortes/salon1.jpg',
+'assets/cortes/salon2.jpg',
+'assets/cortes/salon3.jpg',
+'assets/cortes/salon4.jpg',
+'assets/cortes/salon5.jpg',
+'assets/cortes/salon6.jpg',
+'assets/cortes/salon7.jpg',
+'assets/cortes/salon8.jpg'
 ];
 
 

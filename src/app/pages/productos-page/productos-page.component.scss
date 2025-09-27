@@ -1,3 +1,164 @@
 /* Productos Page Component Styles */
 
-/* Estilos específicos para la página de productos - agregar cuando sea necesario */
+/* Contenedor de la card de producto */
+.product-card {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Altura fija para todas las cards */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Imagen que ocupa todo el espacio de la card */
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción y rellena toda la card */
+  object-position: center; /* Centra la imagen */
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Overlay del título */
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  padding: 20px 16px 16px;
+  border-radius: 0 0 16px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Responsive - Ajustar altura en dispositivos móviles */
+@media (max-width: 768px) {
+  .product-card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
+    height: 220px;
+  }
+  
+  .product-overlay {
+    padding: 16px 12px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Estilos para el modal */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out;
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute !important;
+  top: -16px !important;
+  right: -16px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background-color: white !important;
+  color: black !important;
+  border: none !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+  z-index: 1000 !important;
+}
+
+.modal-close-button:hover {
+  transform: scale(1.1) !important;
+  background-color: #f3f4f6 !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.modal-close-button:active {
+  transform: scale(0.95) !important;
+}
+
+/* Contenedor del modal con mejor posicionamiento */
+.modal-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8) translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+/* Responsive para el modal */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 20px !important;
+    padding: 20px !important;
+  }
+  
+  .modal-close-button {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 20px !important;
+    top: -12px !important;
+    right: -12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .modal-image-container {
+    position: relative;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 16px !important;
+    padding: 16px !important;
+  }
+  
+  .modal-close-button {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 18px !important;
+    top: -8px !important;
+    right: -8px !important;
+  }
+}

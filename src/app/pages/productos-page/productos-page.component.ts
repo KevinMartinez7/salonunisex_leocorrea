@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,21 +10,33 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductosPageComponent {
   products = [
-    { title: 'Pomada Mate', image: 'assets/productos/pomada-mate.jpg' },
-    { title: 'Cera Brillante', image: 'assets/productos/cera-brillante.jpg' },
-    { title: 'Shampoo para Barba', image: 'assets/productos/shampoo-barba.jpg' },
-    { title: 'Aceite para Barba', image: 'assets/productos/aceite-barba.jpg' },
-    { title: 'Peine Profesional', image: 'assets/productos/peine.jpg' },
-    { title: 'Navaja Clásica', image: 'assets/productos/navaja.jpg' }
+    { title: 'Pomada Mate', image: 'assets/productos/producto1.jpg' },
+    { title: 'Acondicionador con Keratina', image: 'assets/productos/producto2.jpg' },
+    { title: 'Máscara capilar Keratina', image: 'assets/productos/producto3.jpg' },
+    { title: 'Skin Anti-Age', image: 'assets/productos/producto4.jpg' },
+    { title: 'Shampoo cremoso', image: 'assets/productos/producto5.jpg' },
+    { title: 'NMáscara capilar Coco & Vainilla', image: 'assets/productos/producto6.jpg' }
   ];
 
   selectedProduct: any = null;
 
   openModal(product: any) {
     this.selectedProduct = product;
+    // Prevenir el scroll del body cuando el modal esté abierto
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
     this.selectedProduct = null;
+    // Restaurar el scroll del body
+    document.body.style.overflow = 'auto';
+  }
+
+  // Cerrar modal con tecla Escape
+  @HostListener('document:keydown', ['$event'])
+  onEscapeKey(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.selectedProduct) {
+      this.closeModal();
+    }
   }
 }

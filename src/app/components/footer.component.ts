@@ -10,7 +10,7 @@ template: `
 
     <!-- Logo y copyright -->
     <div class="flex items-center gap-3">
-      <img src="assets/logo2.png" alt="Logo" class="h-10 w-10 object-contain" />
+      <img src="assets/logo3.png" alt="Logo" class="h-10 w-10 object-contain" />
       <span class="text-sm opacity-80">© {{year}} Leo Correa Barber • Rudos con estilo</span>
     </div>
 

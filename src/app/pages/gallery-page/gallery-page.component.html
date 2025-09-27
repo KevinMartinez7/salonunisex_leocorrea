@@ -2,26 +2,21 @@
  <h2 class="text-3xl font-bold text-center mb-8">Galería de Cortes</h2>
  <!-- Galería de imágenes -->
  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
- <div *ngFor="let cut of cuts" class="relative group cursor-pointer" (click)="openModal(cut)">
- <img [src]="cut.image" [alt]="cut.title"
- class="rounded-2xl shadow-md transition-transform duration-300
-group-hover:scale-105">
- <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60
-text-white text-center py-2 rounded-b-2xl">
- {{ cut.title }}
- </div>
- </div>
+   <div *ngFor="let cut of cuts" class="gallery-card group" (click)="openModal(cut)">
+     <img [src]="cut.image" [alt]="cut.title" class="gallery-image">
+     <div class="gallery-overlay">
+       {{ cut.title }}
+     </div>
+   </div>
  </div>
  <!-- Modal -->
- <div *ngIf="selectedCut" class="fixed inset-0 bg-black bg-opacity-80 flex
-items-center justify-center z-50">
- <div class="relative max-w-3xl w-full p-4">
- <button class="absolute top-2 right-2 text-white
-text-3xl" (click)="closeModal()">&times;</button>
- <img [src]="selectedCut.image" [alt]="selectedCut.title"
-class="rounded-2xl w-full shadow-lg">
- <p class="text-white text-center mt-4 text-lg">{{ selectedCut.title }}
-</p>
- </div>
+ <div *ngIf="selectedCut" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50" (click)="closeModal()">
+   <div class="relative max-w-3xl w-full p-4" (click)="$event.stopPropagation()">
+     <button class="absolute -top-4 -right-4 bg-white text-black hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold shadow-lg transition-all duration-200 z-10" (click)="closeModal()">
+       ×
+     </button>
+     <img [src]="selectedCut.image" [alt]="selectedCut.title" class="rounded-2xl w-full shadow-lg">
+     <p class="text-white text-center mt-4 text-lg font-semibold">{{ selectedCut.title }}</p>
+   </div>
  </div>
  </div>

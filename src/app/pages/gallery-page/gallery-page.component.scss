@@ -1,3 +1,117 @@
 /* Gallery Page Component Styles */
 
-/* Estilos específicos para la galería - agregar cuando sea necesario */
+/* Contenedor de la card de imagen */
+.gallery-card {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Altura fija para todas las cards */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Imagen que ocupa todo el espacio de la card */
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción y rellena toda la card */
+  object-position: center; /* Centra la imagen */
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+/* Overlay del título */
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  padding: 20px 16px 16px;
+  border-radius: 0 0 16px 16px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Responsive - Ajustar altura en dispositivos móviles */
+@media (max-width: 768px) {
+  .gallery-card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-card {
+    height: 220px;
+  }
+  
+  .gallery-overlay {
+    padding: 16px 12px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Estilos para el modal */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-close-button {
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.modal-close-button:hover {
+  transform: scale(1.1);
+  background-color: #f3f4f6 !important;
+}
+
+.modal-close-button:active {
+  transform: scale(0.95);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8) translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+/* Responsive para el modal */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 16px;
+  }
+  
+  .modal-close-button {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    top: -18px;
+    right: -18px;
+  }
+}

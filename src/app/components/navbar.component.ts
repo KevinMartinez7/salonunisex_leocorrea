@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
 
     <!-- Logo (izquierda) -->
     <a routerLink="/" class="flex items-center gap-2 absolute left-4">
-      <img src="assets/logo2.png" alt="Logo" class="h-12 w-12 object-contain" />
+      <img src="assets/logo3.png" alt="Logo" class="h-12 w-12 object-contain" />
       <span class="font-extrabold text-xl sm:text-2xl tracking-wide text-neutral-800">Leo Correa • Barber</span>
     </a>
 
