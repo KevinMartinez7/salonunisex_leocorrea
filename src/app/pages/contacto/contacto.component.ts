@@ -25,13 +25,14 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
   isLoading = false;
   fechaSeleccionada = false;
   showMapModal = false;
+  showConfirmationModal = false;
   
   servicios = [
-    { value: 'corte-clasico', label: 'Corte Clásico', precio: '$15' },
-    { value: 'fade-moderno', label: 'Fade / Degradé', precio: '$18' },
-    { value: 'afeitado-premium', label: 'Afeitado Premium', precio: '$12' },
-    { value: 'corte-barba', label: 'Corte + Barba', precio: '$25' },
-    { value: 'unisex-color', label: 'Unisex & Color', precio: '$30' },
+    { value: 'corte-degrade', label: 'Corte Clásico', precio: '$15.000' },
+    { value: 'Clasico-tijera', label: 'Fade / Degradé', precio: '$15.000' },
+    //{ value: 'afeitado-premium', label: 'Afeitado Premium', precio: '$12' },
+    { value: 'corte-barba', label: 'Corte + Barba', precio: '$17.000' },
+    { value: 'unisex-color', label: 'Unisex & Color', precio: '$60.000' },
   ];
 
   // Horarios por día de la semana (0 = Domingo, 1 = Lunes, 2 = Martes, etc.)
@@ -275,8 +276,8 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
         // Abrir WhatsApp
         window.open(urlWhatsApp, '_blank');
         
-        // Mostrar mensaje de éxito
-        alert('¡Reserva guardada exitosamente! Te redirigimos a WhatsApp para confirmar.');
+        // Mostrar modal de confirmación
+        this.showConfirmationModal = true;
         
         // Reset form
         this.reservaForm.reset();
@@ -467,6 +468,12 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
   
   closeMapModal() {
     this.showMapModal = false;
+    document.body.style.overflow = 'auto'; // Restaurar scroll
+  }
+  
+  // Métodos para el modal de confirmación
+  closeConfirmationModal() {
+    this.showConfirmationModal = false;
     document.body.style.overflow = 'auto'; // Restaurar scroll
   }
 }
