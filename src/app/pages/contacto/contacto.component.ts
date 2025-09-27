@@ -28,8 +28,8 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
   showConfirmationModal = false;
   
   servicios = [
-    { value: 'corte-degrade', label: 'Corte Clásico', precio: '$15.000' },
-    { value: 'Clasico-tijera', label: 'Fade / Degradé', precio: '$15.000' },
+    { value: 'corte-degrade', label: 'Corte degrade ', precio: '$15.000' },
+    { value: 'Clasico-tijera', label: 'Clasico tijera', precio: '$15.000' },
     //{ value: 'afeitado-premium', label: 'Afeitado Premium', precio: '$12' },
     { value: 'corte-barba', label: 'Corte + Barba', precio: '$17.000' },
     { value: 'unisex-color', label: 'Unisex & Color', precio: '$60.000' },
