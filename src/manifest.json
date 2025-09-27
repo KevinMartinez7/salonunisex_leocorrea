@@ -1,0 +1,22 @@
+{
+  "name": "Leo Correa Barber",
+  "short_name": "LeoCorreaBarber",
+  "description": "Salón de belleza profesional - Cortes, afeitado y servicios de barbería",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "categories": ["beauty", "business", "lifestyle"]
+}
