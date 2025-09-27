@@ -11,14 +11,14 @@ import { RouterLink } from '@angular/router';
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-center relative">
 
     <!-- Logo (izquierda) -->
-    <a routerLink="/" class="flex items-center gap-2 absolute left-4">
+    <a routerLink="/" (click)="scrollToTop()" class="flex items-center gap-2 absolute left-4 cursor-pointer">
       <img src="assets/logo3.png" alt="Logo" class="h-12 w-12 object-contain" />
       <span class="font-extrabold text-xl sm:text-2xl tracking-wide text-neutral-800">Leo Correa • Barber</span>
     </a>
 
     <!-- Links (centrados) -->
     <nav class="hidden md:flex items-center gap-8 text-lg font-semibold text-neutral-700">
-      <a routerLink="/" class="relative group transform transition-all duration-300 hover:-translate-y-1 hover:scale-105">
+      <a routerLink="/" (click)="scrollToTop()" class="relative group transform transition-all duration-300 hover:-translate-y-1 hover:scale-105 cursor-pointer">
         Inicio
         <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-brand.accent transition-all duration-300 group-hover:w-full"></span>
       </a>
@@ -55,7 +55,7 @@ import { RouterLink } from '@angular/router';
   <!-- Menú mobile -->
   <div *ngIf="mobileMenuOpen" class="md:hidden bg-white border-t border-neutral-200 shadow-sm z-40">
     <nav class="flex flex-col gap-4 px-4 py-4 text-lg font-semibold text-neutral-700">
-      <a routerLink="/" (click)="toggleMobileMenu()" class="hover:text-neutral-900 transition-transform transform hover:-translate-y-1 hover:scale-105">Inicio</a>
+      <a routerLink="/" (click)="toggleMobileMenu(); scrollToTop()" class="hover:text-neutral-900 transition-transform transform hover:-translate-y-1 hover:scale-105 cursor-pointer">Inicio</a>
       <a routerLink="/productos" (click)="toggleMobileMenu()" class="hover:text-neutral-900 transition-transform transform hover:-translate-y-1 hover:scale-105">Productos</a>
       <a routerLink="/contacto" (click)="toggleMobileMenu()" class="hover:text-neutral-900 transition-transform transform hover:-translate-y-1 hover:scale-105">Contacto</a>
     </nav>
@@ -69,5 +69,12 @@ export class NavbarComponent {
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
