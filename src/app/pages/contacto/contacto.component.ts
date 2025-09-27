@@ -24,6 +24,7 @@ export class ContactPageComponent implements OnInit, AfterViewInit {
   horariosOcupados: string[] = [];
   isLoading = false;
   fechaSeleccionada = false;
+  showMapModal = false;
   
   servicios = [
     { value: 'corte-clasico', label: 'Corte Clásico', precio: '$15' },
@@ -456,5 +457,16 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
   
   getCurrentMonthYear(): string {
     return `${this.monthNames[this.currentDate.getMonth()]} de ${this.currentDate.getFullYear()}`;
+  }
+  
+  // Métodos para el modal del mapa
+  openMapModal() {
+    this.showMapModal = true;
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del fondo
+  }
+  
+  closeMapModal() {
+    this.showMapModal = false;
+    document.body.style.overflow = 'auto'; // Restaurar scroll
   }
 }
