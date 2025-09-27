@@ -107,7 +107,7 @@ export class SupabaseService {
         return [];
       }
 
-      return data.map(reserva => reserva.horario);
+      return data?.map((reserva: any) => reserva.horario) || [];
     } catch (error) {
       console.error('Error obteniendo horarios ocupados:', error);
       return [];

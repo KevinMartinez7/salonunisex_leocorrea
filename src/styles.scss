@@ -1,184 +1,75 @@
+/* Estilos globales */
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
 
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
+/* Fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-html {
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+/* Reset y estilos básicos */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1f2937;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
-  margin: 0;
-}
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-/* Estilos globales minimalistas */
-body { @apply bg-white text-neutral-900 antialiased; }
-.container { @apply mx-auto px-4 sm:px-6 lg:px-8; }
-.card { @apply bg-white rounded-2xl shadow-soft border border-neutral-200; }
-.btn { @apply inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 font-medium border border-neutral-300 hover:border-neutral-400 transition; }
-
-/* Estilos globales mejorados para calendarios nativos */
-input[type="date"] {
-  position: relative;
-  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Mejorar el calendario en navegadores WebKit (Chrome, Edge, Safari) - MÁS GRANDE */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: none !important;
-  cursor: default !important;
+/* Estilos de utilidad básicos */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-/* Eliminar completamente los efectos hover del indicador */
-
-/* Estilos mejorados para los controles del calendario - MÁS GRANDES */
-input[type="date"]::-webkit-datetime-edit {
-  padding: 12px 16px !important;
-  font-size: 20px !important;
-  font-weight: 600 !important;
-  color: #1f2937 !important;
-  background: transparent !important;
-}
-
-input[type="date"]::-webkit-datetime-edit-fields-wrapper {
-  background: transparent !important;
-  padding: 8px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-input[type="date"]::-webkit-datetime-edit-text {
-  color: #6b7280 !important;
-  padding: 4px 8px !important;
-  font-size: 20px !important;
-  font-weight: 500 !important;
-}
-
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field,
-input[type="date"]::-webkit-datetime-edit-year-field {
-  background: transparent !important;
-  color: #1f2937 !important;
-  font-weight: 700 !important;
-  padding: 10px 14px !important;
-  text-align: center !important;
-  border-radius: 8px !important;
-  transition: all 0.2s ease !important;
-  font-size: 20px !important;
-  min-width: 60px !important;
-  border: 2px solid transparent !important;
-  margin: 2px !important;
-}
-
-input[type="date"]::-webkit-datetime-edit-month-field:hover,
-input[type="date"]::-webkit-datetime-edit-day-field:hover,
-input[type="date"]::-webkit-datetime-edit-year-field:hover {
-  background-color: #f3f4f6 !important;
-  border-color: #d1d5db !important;
-  transform: scale(1.05) !important;
-}
-
-input[type="date"]::-webkit-datetime-edit-month-field:focus,
-input[type="date"]::-webkit-datetime-edit-day-field:focus,
-input[type="date"]::-webkit-datetime-edit-year-field:focus {
-  background-color: #dbeafe !important;
-  color: #1d4ed8 !important;
-  outline: none !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
-  transform: scale(1.08) !important;
-}
-
-/* Mejorar la apariencia en Firefox */
-input[type="date"]::-moz-focus-inner {
-  border: 0 !important;
-  padding: 0 !important;
-}
-
-/* Estilos adicionales para mejor UX */
-input[type="date"]:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
-  border-color: #3b82f6 !important;
-  transform: scale(1.01) !important;
-}
-
-/* Estilos para mejorar la legibilidad en dispositivos móviles - AÚN MÁS GRANDES */
-@media (max-width: 768px) {
-  input[type="date"] {
-    font-size: 18px !important; /* Evita zoom en iOS */
-    min-height: 60px !important; /* Más grande para touch */
-    padding: 16px 20px !important;
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
   }
-  
-  input[type="date"]::-webkit-datetime-edit {
-    font-size: 22px !important;
-    padding: 14px 18px !important;
-  }
-  
-  input[type="date"]::-webkit-datetime-edit-month-field,
-  input[type="date"]::-webkit-datetime-edit-day-field,
-  input[type="date"]::-webkit-datetime-edit-year-field {
-    font-size: 22px !important;
-    padding: 12px 16px !important;
-    min-width: 70px !important;
-  }
-  
-  input[type="date"]::-webkit-datetime-edit-text {
-    font-size: 22px !important;
-    padding: 6px 10px !important;
-  }
-  
-  /* Los indicadores ya están ocultos globalmente */
 }
 
-/* Estilos para pantallas muy pequeñas */
-@media (max-width: 480px) {
-  input[type="date"]::-webkit-datetime-edit {
-    font-size: 24px !important;
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
   }
-  
-  input[type="date"]::-webkit-datetime-edit-month-field,
-  input[type="date"]::-webkit-datetime-edit-day-field,
-  input[type="date"]::-webkit-datetime-edit-year-field {
-    font-size: 24px !important;
-    padding: 14px 18px !important;
-  }
-  
-  /* Los indicadores ya están ocultos globalmente */
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 1rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 500;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  border-color: #9ca3af;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
