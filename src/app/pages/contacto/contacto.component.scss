@@ -201,6 +201,8 @@
 .calendar-container {
   width: 100%;
   overflow: visible;
+  display: flex;
+  justify-content: center;
 }
 
 .custom-calendar {
@@ -210,8 +212,8 @@
   overflow: hidden;
   font-family: 'Inter', system-ui, sans-serif;
   width: 100%;
-  max-width: 100%;
-  margin: 0;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .calendar-header {
@@ -347,11 +349,14 @@
 /* Estilos responsive para el calendario personalizado */
 @media (max-width: 768px) {
   .calendar-container {
-    margin: 0 -12px;
+    margin: 0 auto;
+    padding: 0 16px;
+    justify-content: center;
   }
   
   .custom-calendar {
-    max-width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
   }
   
   .calendar-header {
@@ -381,11 +386,15 @@
 /* Estilos específicos para pantallas muy pequeñas (iPhone SE, Galaxy A25) */
 @media (max-width: 400px) {
   .calendar-container {
-    margin: 0 -16px;
+    margin: 0 auto;
+    padding: 0 12px;
+    justify-content: center;
   }
   
   .custom-calendar {
     border-radius: 12px;
+    margin: 0 auto;
+    max-width: 95%;
   }
   
   .calendar-header {
@@ -426,7 +435,13 @@
 /* Optimización específica para Galaxy A25 y similares */
 @media (max-width: 380px) {
   .calendar-container {
-    margin: 0 -20px;
+    margin: 0 auto;
+    padding: 0 8px;
+    justify-content: center;
+  }
+  
+  .custom-calendar {
+    max-width: 98%;
   }
   
   .calendar-header h3 {
