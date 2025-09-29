@@ -458,3 +458,136 @@
     min-height: 30px;
   }
 }
+
+/* === BOTONES DE COPIAR RESPONSIVOS === */
+.copy-button {
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-button:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.copy-button-large {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.copy-button-small {
+  padding: 4px 12px;
+  font-size: 12px;
+}
+
+.copy-button-cbu {
+  background-color: #2563eb;
+  color: white;
+}
+
+.copy-button-cbu:hover {
+  background-color: #1d4ed8;
+}
+
+.copy-button-alias {
+  background-color: #059669;
+  color: white;
+}
+
+.copy-button-alias:hover {
+  background-color: #047857;
+}
+
+/* Contenedores de datos bancarios responsivos */
+.bank-data-container {
+  background-color: #f9fafb;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.bank-data-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bank-data-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bank-data-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+}
+
+.bank-data-value {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #111827;
+  word-break: break-all;
+  font-size: 16px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+  .bank-data-container {
+    padding: 8px;
+  }
+  
+  .bank-data-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .bank-data-info {
+    text-align: center;
+  }
+  
+  .bank-data-label {
+    font-size: 12px;
+  }
+  
+  .bank-data-value {
+    font-size: 14px;
+  }
+  
+  .copy-button-large {
+    width: 100%;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .copy-button-small {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 380px) {
+  .bank-data-value {
+    font-size: 12px;
+  }
+  
+  .copy-button-large {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .copy-button-small {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+}
