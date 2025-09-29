@@ -1,570 +1,638 @@
 <div class="flex flex-col min-h-screen bg-gray-50">
-  <!-- Contenido principal -->
-  <main class="flex-grow py-8 px-4 sm:py-12">
-    <div class="container max-w-4xl mx-auto">
-      
-      <!-- Header -->
-      <div class="text-center mb-8 sm:mb-12">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-          Reserva tu turno
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-          Completa el formulario y se creará tu reserva por WhatsApp para que la envíes desde ahí
-        </p>
-      </div>
+    <!-- Contenido principal -->
+    <main class="flex-grow py-8 px-4 sm:py-12">
+        <div class="container max-w-4xl mx-auto">
 
-      <!-- Banner informativo del proceso -->
-      <div class="max-w-4xl mx-auto mb-8">
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-lg p-6 shadow-sm">
-          <div class="flex items-start">
-            <div class="flex-shrink-0">
-              <svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
+            <!-- Header -->
+            <div class="text-center mb-8 sm:mb-12">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Reserva tu turno
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Completa el formulario y se creará tu reserva por WhatsApp para que la envíes desde ahí
+                </p>
             </div>
-            <div class="ml-3">
-              <h3 class="text-lg font-semibold text-blue-900 mb-2">
-                📋 Proceso de Reserva
-              </h3>
-              <div class="text-blue-800 space-y-3">
-                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
-                  <span class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">1</span>
-                  <span><strong>Completa</strong> el formulario con tus datos y servicio deseado</span>
-                </p>
-                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
-                  <span class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">2</span>
-                  <span><strong>Realiza la transferencia</strong> a la cuenta indicada al final del formulario</span>
-                </p>
-                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
-                  <span class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">3</span>
-                  <span><strong>Envía el comprobante por WhatsApp</strong> para confirmar tu turno</span>
-                </p>
-              </div>
-              <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                <p class="text-amber-800 font-medium flex items-center gap-2">
-                  <svg class="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
-                  </svg>
-                  ⚠️ Tu reserva se guardará ÚNICAMENTE al recibir el comprobante por WhatsApp
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Formulario -->
+            <!-- Banner informativo del proceso -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div
+                    class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 rounded-lg p-6 shadow-sm">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-lg font-semibold text-blue-900 mb-2">
+                                📋 Proceso de Reserva
+                            </h3>
+                            <div class="text-blue-800 space-y-3">
+                                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
+                                    <span
+                                        class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">1</span>
+                                    <span><strong>Completa</strong> el formulario con tus datos y servicio
+                                        deseado</span>
+                                </p>
+                                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
+                                    <span
+                                        class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">2</span>
+                                    <span><strong>Realiza la transferencia</strong> a la cuenta indicada al final del
+                                        formulario</span>
+                                </p>
+                                <p class="flex items-start gap-3 flex-col sm:flex-row sm:items-center">
+                                    <span
+                                        class="bg-blue-500 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold flex-shrink-0">3</span>
+                                    <span><strong>Envía el comprobante por WhatsApp</strong> para confirmar tu
+                                        turno</span>
+                                </p>
+                            </div>
+                            <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                <p class="text-amber-800 font-medium flex items-center gap-2">
+                                    <svg class="h-5 w-5 text-amber-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z">
+                                        </path>
+                                    </svg>
+                                    ⚠️ Tu reserva se guardará ÚNICAMENTE al recibir el comprobante por WhatsApp
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario -->
             <form class="card p-6 sm:p-8 lg:p-10 space-y-6" [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
-        
-        <!-- Datos Personales -->
-        <div class="border-b border-gray-200 pb-6 mb-6">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Datos Personales</h3>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Nombre -->
-            <div class="form-field">
-              <label class="form-label">Nombre Completo *</label>
-              <input 
-                type="text" 
-                formControlName="nombre" 
-                class="form-input"
-                placeholder="Tu nombre completo"
-              />
-              <div class="form-error" *ngIf="getFieldError('nombre')">
-                {{ getFieldError('nombre') }}
-              </div>
+
+                <!-- Datos Personales -->
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Datos Personales</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Nombre -->
+                        <div class="form-field">
+                            <label class="form-label">Nombre Completo *</label>
+                            <input type="text" formControlName="nombre" class="form-input"
+                                placeholder="Tu nombre completo" />
+                            <div class="form-error" *ngIf="getFieldError('nombre')">
+                                {{ getFieldError('nombre') }}
+                            </div>
+                        </div>
+
+                        <!-- Teléfono -->
+                        <div class="form-field">
+                            <label class="form-label">Teléfono *</label>
+                            <input type="tel" formControlName="telefono" class="form-input" placeholder="1234567890" />
+                            <div class="form-error" *ngIf="getFieldError('telefono')">
+                                {{ getFieldError('telefono') }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-field">
+                        <label class="form-label">Email *</label>
+                        <input type="email" formControlName="email" class="form-input" placeholder="tu@email.com" />
+                        <div class="form-error" *ngIf="getFieldError('email')">
+                            {{ getFieldError('email') }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio -->
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Selecciona tu Servicio</h3>
+
+                    <div class="form-field">
+                        <label class="form-label">Servicio *</label>
+                        <select formControlName="servicio" class="form-select">
+                            <option value="">Selecciona un servicio</option>
+                            <option *ngFor="let servicio of servicios" [value]="servicio.value">
+                                {{ servicio.label }} - {{ servicio.precio }}
+                            </option>
+                        </select>
+                        <div class="form-error" *ngIf="getFieldError('servicio')">
+                            {{ getFieldError('servicio') }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fecha y Horario -->
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Fecha y Horario</h3>
+
+                    <!-- Información de horarios de atención -->
+                    <div class="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
+                        <div class="flex items-start gap-3">
+                            <div class="flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600 mt-0.5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-blue-900 mb-2">Horarios de Atención</h4>
+                                <div class="text-sm text-blue-800 space-y-1">
+                                    <p><strong>Mar-Mié-Jue-Vie:</strong> 8:00-12:00 y 15:00-19:00</p>
+                                    <p><strong>Sábados:</strong> 8:00-15:00</p>
+                                    <p class="text-blue-600 font-medium">📝 Domingos y lunes cerrado</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendario Personalizado -->
+                    <div class="form-field">
+                        <label class="form-label">Selecciona la fecha de tu cita *</label>
+
+                        <div class="calendar-container">
+                            <div class="custom-calendar">
+                                <!-- Header del calendario -->
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav-button" (click)="previousMonth()">
+                                        <span>‹</span>
+                                    </button>
+                                    <h3>{{ getCurrentMonthYear() }}</h3>
+                                    <button type="button" class="calendar-nav-button" (click)="nextMonth()">
+                                        <span>›</span>
+                                    </button>
+                                </div>
+
+                                <!-- Días de la semana -->
+                                <div class="calendar-weekdays">
+                                    <div class="calendar-weekday" *ngFor="let day of weekdays">{{ day }}</div>
+                                </div>
+
+                                <!-- Días del calendario -->
+                                <div class="calendar-days">
+                                    <div *ngFor="let day of calendarDays" class="calendar-day"
+                                        [class.other-month]="!day.isCurrentMonth" [class.today]="day.isToday"
+                                        [class.selected]="day.isSelected" [class.disabled]="day.isDisabled"
+                                        [class.has-events]="day.hasEvents" (click)="selectDate(day)">
+                                        {{ day.day }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mostrar fecha seleccionada de forma elegante -->
+                        <div *ngIf="fechaSeleccionada"
+                            class="mt-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-200 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <p class="text-sm font-medium text-green-800">¡Fecha seleccionada!</p>
+                                    <p class="text-lg font-bold text-green-900">{{ getFormattedDateForDisplay() }}</p>
+                                    <p class="text-sm text-green-700 mt-1">📅 {{ getHorarioInfo() }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-error" *ngIf="getFieldError('fecha')">
+                            {{ getFieldError('fecha') }}
+                        </div>
+
+
+                    </div>
+
+                    <!-- Horario -->
+                    <div class="form-field">
+                        <label class="form-label">Horario disponible *</label>
+
+                        <div *ngIf="!fechaSeleccionada"
+                            class="p-6 bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 text-center">
+                            <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <p class="text-gray-500 text-lg">Primero selecciona una fecha para ver los horarios
+                                disponibles</p>
+                        </div>
+
+                        <div *ngIf="fechaSeleccionada" class="space-y-4">
+                            <div
+                                class="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-green-800 font-medium">{{ horariosDisponibles.length }} horarios
+                                        disponibles</span>
+                                </div>
+                                <span class="text-green-600 text-sm">{{ horarios.length - horariosDisponibles.length }}
+                                    ocupados</span>
+                            </div>
+
+                            <div class="time-grid">
+                                <div *ngFor="let horario of horarios" class="time-button"
+                                    [class.selected]="selectedTime === horario"
+                                    [class.disabled]="isTimeDisabled(horario)" (click)="selectTime(horario)">
+                                    <div class="font-medium text-base">{{ horario }}</div>
+                                    <div *ngIf="isTimeDisabled(horario)" class="text-xs text-red-500 mt-1 font-medium">
+                                        Ocupado</div>
+                                    <div *ngIf="!isTimeDisabled(horario)" class="text-xs text-gray-500 mt-1">Disponible
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="selectedTime" class="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-blue-800 font-medium">Horario seleccionado: {{ selectedTime
+                                        }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-error mt-2" *ngIf="selectedTime === '' && reservaForm.get('fecha')?.touched">
+                            Selecciona un horario disponible
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comentarios -->
+                <div class="border-b border-gray-200 pb-6 mb-6">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Información Adicional</h3>
+
+                    <div class="form-field">
+                        <label class="form-label">Comentarios (Opcional)</label>
+                        <textarea formControlName="comentarios" rows="4" class="form-input resize-none"
+                            placeholder="¿Algún pedido especial o información que debamos saber?"></textarea>
+                    </div>
+                </div>
+
+                <!-- Resumen y Botón -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
+                    <div class="flex items-center gap-2 mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                            </path>
+                        </svg>
+                        <h4 class="font-bold text-xl text-gray-900">Resumen de tu Reserva</h4>
+                    </div>
+
+                    <div *ngIf="!getSelectedService() || !fechaSeleccionada || !selectedTime" class="text-center py-6">
+                        <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                        <p class="text-gray-500 text-lg">Complete los datos arriba para ver el resumen de su reserva</p>
+                    </div>
+
+                    <div class="space-y-4 mb-6" *ngIf="getSelectedService() && fechaSeleccionada && selectedTime">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z">
+                                            </path>
+                                        </svg>
+                                        <span class="font-semibold text-gray-800">Servicio</span>
+                                    </div>
+                                    <p class="text-lg text-gray-900">{{ getSelectedService()?.label }}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                        {{ getSelectedService()?.precio }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span class="font-semibold text-gray-800">Fecha y Horario</span>
+                            </div>
+                            <p class="text-lg text-gray-900">{{ getFormattedDateForDisplay() }}</p>
+                            <p class="text-blue-600 font-medium">{{ selectedTime }}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-sm text-gray-600 text-center sm:text-left">
+                            * Te contactaremos por WhatsApp para confirmar la disponibilidad
+                        </p>
+
+                        <button type="submit" class="btn-primary flex items-center gap-2"
+                            [disabled]="!isFormValid() || isLoading">
+                            <svg *ngIf="isLoading" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+
+                            <svg *ngIf="!isLoading" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                            </svg>
+                            {{ isLoading ? 'Guardando Reserva...' : 'Enviar Reserva por WhatsApp' }}
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Información de Pago -->
+            <div class="mt-6">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h4 class="text-lg font-semibold text-green-900 mb-2">
+                                💳 Información de Pago
+                            </h4>
+                            <div class="text-green-800 space-y-2">
+                                <p><strong>Transferencia a:</strong></p>
+                                <div class="ml-4 space-y-3 text-sm bg-white p-4 rounded border">
+                                    <p><strong>Banco:</strong> MERCADO PAGO SRL</p>
+                                    <p><strong>Titular:</strong> Leonardo German Correa</p>
+                                    
+                                    <!-- CBU/CVU con botón de copiar -->
+                                    <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-gray-700">CBU/CVU:</p>
+                                            <p class="text-lg font-mono text-gray-900">0000003100021335046592</p>
+                                        </div>
+                                        <button 
+                                            (click)="copyCBU()" 
+                                            class="ml-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 shadow-md hover:shadow-lg"
+                                            title="Copiar CBU/CVU">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                            </svg>
+                                            Copiar
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Alias con botón de copiar -->
+                                    <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                                        <div>
+                                            <p class="font-medium text-gray-700">Alias:</p>
+                                            <p class="text-lg font-mono text-gray-900">salon.leocorrea</p>
+                                        </div>
+                                        <button 
+                                            (click)="copyAlias()" 
+                                            class="ml-3 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 shadow-md hover:shadow-lg"
+                                            title="Copiar Alias">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                            </svg>
+                                            Copiar
+                                        </button>
+                                    </div>
+                                </div>
+                                <p class="font-medium text-green-900">
+                                    📱 <strong>Envía el comprobante a WhatsApp:</strong> +54 249 465 1747
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Teléfono -->
-            <div class="form-field">
-              <label class="form-label">Teléfono *</label>
-              <input 
-                type="tel" 
-                formControlName="telefono" 
-                class="form-input"
-                placeholder="1234567890"
-              />
-              <div class="form-error" *ngIf="getFieldError('telefono')">
-                {{ getFieldError('telefono') }}
-              </div>
-            </div>
-          </div>
+            <!-- Información de Contacto -->
+            <div class="mt-8 sm:mt-12 text-center">
+                <div class="card p-6 sm:p-8">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">¿Tienes Preguntas?</h3>
+                    <p class="text-gray-600 mb-6">También puedes contactarnos directamente:</p>
 
-          <!-- Email -->
-          <div class="form-field">
-            <label class="form-label">Email *</label>
-            <input 
-              type="email" 
-              formControlName="email" 
-              class="form-input"
-              placeholder="tu@email.com"
-            />
-            <div class="form-error" *ngIf="getFieldError('email')">
-              {{ getFieldError('email') }}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div class="flex items-center justify-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                            <span class="text-lg">+54 249 465 1747</span>
+                        </div>
+
+                        <div class="flex items-center justify-center gap-3">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                            <button (click)="openMapModal()"
+                                class="text-lg text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200">
+                                Ver Ubicación
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </main>
 
-        <!-- Servicio -->
-        <div class="border-b border-gray-200 pb-6 mb-6">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Selecciona tu Servicio</h3>
-          
-          <div class="form-field">
-            <label class="form-label">Servicio *</label>
-            <select formControlName="servicio" class="form-select">
-              <option value="">Selecciona un servicio</option>
-              <option *ngFor="let servicio of servicios" [value]="servicio.value">
-                {{ servicio.label }} - {{ servicio.precio }}
-              </option>
-            </select>
-            <div class="form-error" *ngIf="getFieldError('servicio')">
-              {{ getFieldError('servicio') }}
-            </div>
-          </div>
-        </div>
-
-        <!-- Fecha y Horario -->
-        <div class="border-b border-gray-200 pb-6 mb-6">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">Fecha y Horario</h3>
-          
-          <!-- Información de horarios de atención -->
-          <div class="bg-blue-50 rounded-xl p-4 mb-6 border border-blue-200">
-            <div class="flex items-start gap-3">
-              <div class="flex-shrink-0">
-                <svg class="w-6 h-6 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-blue-900 mb-2">Horarios de Atención</h4>
-                <div class="text-sm text-blue-800 space-y-1">
-                  <p><strong>Mar-Mié-Jue-Vie:</strong> 8:00-12:00 y 15:00-19:00</p>
-                  <p><strong>Sábados:</strong> 8:00-15:00</p>
-                  <p class="text-blue-600 font-medium">📝 Domingos y lunes cerrado</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Calendario Personalizado -->
-          <div class="form-field">
-            <label class="form-label">Selecciona la fecha de tu cita *</label>
-            
-            <div class="calendar-container">
-              <div class="custom-calendar">
-                <!-- Header del calendario -->
-                <div class="calendar-header">
-                <button type="button" class="calendar-nav-button" (click)="previousMonth()">
-                  <span>‹</span>
-                </button>
-                <h3>{{ getCurrentMonthYear() }}</h3>
-                <button type="button" class="calendar-nav-button" (click)="nextMonth()">
-                  <span>›</span>
-                </button>
-              </div>
-              
-              <!-- Días de la semana -->
-              <div class="calendar-weekdays">
-                <div class="calendar-weekday" *ngFor="let day of weekdays">{{ day }}</div>
-              </div>
-              
-              <!-- Días del calendario -->
-              <div class="calendar-days">
-                <div 
-                  *ngFor="let day of calendarDays" 
-                  class="calendar-day"
-                  [class.other-month]="!day.isCurrentMonth"
-                  [class.today]="day.isToday"
-                  [class.selected]="day.isSelected"
-                  [class.disabled]="day.isDisabled"
-                  [class.has-events]="day.hasEvents"
-                  (click)="selectDate(day)"
-                >
-                  {{ day.day }}
-                </div>
-              </div>
-            </div>
-            </div>
-            
-            <!-- Mostrar fecha seleccionada de forma elegante -->
-            <div *ngIf="fechaSeleccionada" class="mt-3 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border-2 border-green-200 shadow-sm">
-              <div class="flex items-center gap-3">
-                <div class="flex-shrink-0">
-                  <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-sm font-medium text-green-800">¡Fecha seleccionada!</p>
-                  <p class="text-lg font-bold text-green-900">{{ getFormattedDateForDisplay() }}</p>
-                  <p class="text-sm text-green-700 mt-1">📅 {{ getHorarioInfo() }}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-error" *ngIf="getFieldError('fecha')">
-              {{ getFieldError('fecha') }}
-            </div>
-            
-            
-          </div>
-
-          <!-- Horario -->
-          <div class="form-field">
-            <label class="form-label">Horario disponible *</label>
-            
-            <div *ngIf="!fechaSeleccionada" class="p-6 bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 text-center">
-              <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <p class="text-gray-500 text-lg">Primero selecciona una fecha para ver los horarios disponibles</p>
-            </div>
-            
-            <div *ngIf="fechaSeleccionada" class="space-y-4">
-              <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span class="text-green-800 font-medium">{{ horariosDisponibles.length }} horarios disponibles</span>
-                </div>
-                <span class="text-green-600 text-sm">{{ horarios.length - horariosDisponibles.length }} ocupados</span>
-              </div>
-              
-              <div class="time-grid">
-                <div 
-                  *ngFor="let horario of horarios" 
-                  class="time-button"
-                  [class.selected]="selectedTime === horario"
-                  [class.disabled]="isTimeDisabled(horario)"
-                  (click)="selectTime(horario)"
-                >
-                  <div class="font-medium text-base">{{ horario }}</div>
-                  <div *ngIf="isTimeDisabled(horario)" class="text-xs text-red-500 mt-1 font-medium">Ocupado</div>
-                  <div *ngIf="!isTimeDisabled(horario)" class="text-xs text-gray-500 mt-1">Disponible</div>
-                </div>
-              </div>
-              
-              <div *ngIf="selectedTime" class="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                <div class="flex items-center gap-2">
-                  <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span class="text-blue-800 font-medium">Horario seleccionado: {{ selectedTime }}</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-error mt-2" *ngIf="selectedTime === '' && reservaForm.get('fecha')?.touched">
-              Selecciona un horario disponible
-            </div>
-          </div>
-        </div>
-
-        <!-- Comentarios -->
-        <div class="border-b border-gray-200 pb-6 mb-6">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-6">Información Adicional</h3>
-          
-          <div class="form-field">
-            <label class="form-label">Comentarios (Opcional)</label>
-            <textarea 
-              formControlName="comentarios" 
-              rows="4" 
-              class="form-input resize-none"
-              placeholder="¿Algún pedido especial o información que debamos saber?"
-            ></textarea>
-          </div>
-        </div>
-
-        <!-- Resumen y Botón -->
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
-          <div class="flex items-center gap-2 mb-4">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-            </svg>
-            <h4 class="font-bold text-xl text-gray-900">Resumen de tu Reserva</h4>
-          </div>
-          
-          <div *ngIf="!getSelectedService() || !fechaSeleccionada || !selectedTime" class="text-center py-6">
-            <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-            </svg>
-            <p class="text-gray-500 text-lg">Complete los datos arriba para ver el resumen de su reserva</p>
-          </div>
-          
-          <div class="space-y-4 mb-6" *ngIf="getSelectedService() && fechaSeleccionada && selectedTime">
-            <div class="bg-white rounded-lg p-4 shadow-sm">
-              <div class="flex items-start justify-between">
+    <!-- Modal del Mapa -->
+    <div *ngIf="showMapModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+        (click)="closeMapModal()">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <!-- Header del Modal -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
                 <div>
-                  <div class="flex items-center gap-2 mb-2">
-                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 110 2h-1v10a2 2 0 01-2 2H6a2 2 0 01-2-2V6H3a1 1 0 110-2h4z"></path>
+                    <h3 class="text-xl font-semibold text-gray-900">Nuestra Ubicación</h3>
+                    <p class="text-gray-600 mt-1">Arana 310, Tandil, Buenos Aires</p>
+                </div>
+                <button (click)="closeMapModal()" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                    <span class="font-semibold text-gray-800">Servicio</span>
-                  </div>
-                  <p class="text-lg text-gray-900">{{ getSelectedService()?.label }}</p>
+                </button>
+            </div>
+
+            <!-- Mapa -->
+            <div class="p-6">
+                <div class="w-full h-96 rounded-lg overflow-hidden shadow-md">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.0764557196444!2d-59.14947412437999!3d-37.31701660581159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95911f80f4a3de8f%3A0xbae2a78784515a88!2sArana%20310%2C%20B7000%20Tandil%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1758971536319!5m2!1ses-419!2sar"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="text-right">
-                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
-                    {{ getSelectedService()?.precio }}
-                  </span>
+
+                <!-- Información adicional -->
+                <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        <span class="font-medium">Arana 310, Tandil, Buenos Aires</span>
+                    </div>
                 </div>
-              </div>
             </div>
-            
-            <div class="bg-white rounded-lg p-4 shadow-sm">
-              <div class="flex items-center gap-2 mb-2">
-                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <span class="font-semibold text-gray-800">Fecha y Horario</span>
-              </div>
-              <p class="text-lg text-gray-900">{{ getFormattedDateForDisplay() }}</p>
-              <p class="text-blue-600 font-medium">{{ selectedTime }}</p>
-            </div>
-          </div>
 
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-sm text-gray-600 text-center sm:text-left">
-              * Te contactaremos por WhatsApp para confirmar la disponibilidad
-            </p>
-            
-            <button 
-              type="submit" 
-              class="btn-primary flex items-center gap-2"
-              [disabled]="!isFormValid() || isLoading"
-            >
-              <svg *ngIf="isLoading" class="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              
-              <svg *ngIf="!isLoading" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-              </svg>
-              {{ isLoading ? 'Guardando Reserva...' : 'Enviar Reserva por WhatsApp' }}
-            </button>
-          </div>
-        </div>
-
-      </form>
-
-      <!-- Información de Contacto -->
-      <div class="mt-8 sm:mt-12 text-center">
-        <div class="card p-6 sm:p-8">
-          <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">¿Tienes Preguntas?</h3>
-          <p class="text-gray-600 mb-6">También puedes contactarnos directamente:</p>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-            <div class="flex items-center justify-center gap-3">
-              <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-              </svg>
-              <span class="text-lg">+54 249 465 1747</span>
-            </div>
-            
-            <div class="flex items-center justify-center gap-3">
-              <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-              </svg>
-              <button 
-                (click)="openMapModal()" 
-                class="text-lg text-blue-600 hover:text-blue-800 underline font-medium transition-colors duration-200"
-              >
-                Ver Ubicación
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Información de Pago -->
-      <div class="mt-6">
-        <div class="bg-green-50 border border-green-200 rounded-lg p-6">
-          <div class="flex items-start">
-            <div class="flex-shrink-0">
-              <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-              </svg>
-            </div>
-            <div class="ml-3">
-              <h4 class="text-lg font-semibold text-green-900 mb-2">
-                💳 Información de Pago
-              </h4>
-              <div class="text-green-800 space-y-2">
-                <p><strong>Transferencia a:</strong></p>
-                <div class="ml-4 space-y-1 text-sm bg-white p-3 rounded border">
-                <p><strong>Banco:</strong> MERCADO PAGO SRL</p>
-                <p><strong>Titular:</strong> Leonardo German Correa</p>
-                <p><strong>CBU/CVU:</strong> 0000003100021335046592</p>
-                <p><strong>Alias:</strong> salon.leocorrea</p>
+            <!-- Footer del Modal -->
+            <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <div class="flex justify-end">
+                    <button (click)="closeMapModal()"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Cerrar
+                    </button>
                 </div>
-                <p class="font-medium text-green-900">
-                  📱 <strong>Envía el comprobante a WhatsApp:</strong> +54 249 465 1747
-                </p>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-    </div>
-  </main>
-  
-  <!-- Modal del Mapa -->
-  <div 
-    *ngIf="showMapModal" 
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-    (click)="closeMapModal()"
-  >
-    <div 
-      class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
-      (click)="$event.stopPropagation()"
-    >
-      <!-- Header del Modal -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-200">
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900">Nuestra Ubicación</h3>
-          <p class="text-gray-600 mt-1">Arana 310, Tandil, Buenos Aires</p>
-        </div>
-        <button 
-          (click)="closeMapModal()" 
-          class="p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Mapa -->
-      <div class="p-6">
-        <div class="w-full h-96 rounded-lg overflow-hidden shadow-md">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.0764557196444!2d-59.14947412437999!3d-37.31701660581159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95911f80f4a3de8f%3A0xbae2a78784515a88!2sArana%20310%2C%20B7000%20Tandil%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1758971536319!5m2!1ses-419!2sar" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        
-        <!-- Información adicional -->
-        <div class="mt-4 p-4 bg-gray-50 rounded-lg">
-          <div class="flex items-center gap-2 text-gray-700">
-            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            <span class="font-medium">Arana 310, Tandil, Buenos Aires</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Footer del Modal -->
-      <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
-        <div class="flex justify-end">
-          <button 
-            (click)="closeMapModal()" 
-            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            Cerrar
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Modal de Confirmación de Reserva -->
-  <div 
-    *ngIf="showConfirmationModal" 
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
-    (click)="closeConfirmationModal()"
-  >
-    <div 
-      class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden"
-      (click)="$event.stopPropagation()"
-    >
-      <!-- Header del Modal -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-200 bg-green-50">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-xl font-semibold text-green-900">¡Reserva Enviada!</h3>
-            <p class="text-green-700">Se abrió WhatsApp con tu información</p>
-          </div>
-        </div>
-        <button 
-          (click)="closeConfirmationModal()" 
-          class="p-2 hover:bg-gray-100 rounded-full transition-colors"
-        >
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Contenido -->
-      <div class="p-6 space-y-6">
-        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
-          <div class="flex items-start gap-3">
-            <svg class="w-6 h-6 text-amber-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
-            </svg>
-            <div>
-              <h4 class="font-semibold text-amber-900 mb-2">⚠️ IMPORTANTE - Para confirmar tu reserva:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-amber-800">
-                <li><strong>Realiza la transferencia</strong></li>
-                <li><strong>Toma una foto del comprobante</strong></li>
-                <li><strong>Envíalo por WhatsApp</strong> usando el chat que acabamos de abrir</li>
-              </ol>
+    <!-- Modal de Confirmación de Reserva -->
+    <div *ngIf="showConfirmationModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+        (click)="closeConfirmationModal()">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden"
+            (click)="$event.stopPropagation()">
+            <!-- Header del Modal -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200 bg-green-50">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-green-900">¡Reserva Enviada!</h3>
+                        <p class="text-green-700">Se abrió WhatsApp con tu información</p>
+                    </div>
+                </div>
+                <button (click)="closeConfirmationModal()" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-          </div>
-        </div>
 
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h4 class="font-semibold text-blue-900 mb-3">💳 Datos para Transferencia:</h4>
-          <div class="space-y-2 text-blue-800 text-sm">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <p><strong>Banco:</strong> [MERCADO PAGO]</p>
-              <p><strong>Titular:</strong> Leonardo German Correa</p>
-              <p><strong>CBU/CVU:</strong> [0000003100021335046592]</p>
-              <p><strong>Alias:</strong> [salon.leocorrea]</p>
+            <!-- Contenido -->
+            <div class="p-6 space-y-6">
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-amber-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z">
+                            </path>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-amber-900 mb-2">⚠️ IMPORTANTE - Para confirmar tu reserva:
+                            </h4>
+                            <ol class="list-decimal list-inside space-y-2 text-amber-800">
+                                <li><strong>Realiza la transferencia</strong></li>
+                                <li><strong>Toma una foto del comprobante</strong></li>
+                                <li><strong>Envíalo por WhatsApp</strong> usando el chat que acabamos de abrir</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <h4 class="font-semibold text-blue-900 mb-3">💳 Datos para Transferencia:</h4>
+                    <div class="space-y-3 text-blue-800 text-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <p><strong>Banco:</strong> [MERCADO PAGO]</p>
+                            <p><strong>Titular:</strong> Leonardo German Correa</p>
+                        </div>
+                        
+                        <!-- CBU/CVU con botón compacto -->
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <span class="font-medium">CBU/CVU:</span>
+                                    <span class="ml-2 font-mono">0000003100021335046592</span>
+                                </div>
+                                <button 
+                                    (click)="copyCBU()" 
+                                    class="ml-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs font-medium transition-all duration-200 flex items-center gap-1"
+                                    title="Copiar CBU/CVU">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    Copiar
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Alias con botón compacto -->
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <span class="font-medium">Alias:</span>
+                                    <span class="ml-2 font-mono">salon.leocorrea</span>
+                                </div>
+                                <button 
+                                    (click)="copyAlias()" 
+                                    class="ml-2 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-xs font-medium transition-all duration-200 flex items-center gap-1"
+                                    title="Copiar Alias">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    Copiar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center p-4 bg-gray-50 rounded-lg">
+                    <p class="text-gray-700">
+                        <strong>📱 WhatsApp:</strong> +54 249 465 1747
+                    </p>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Tu reserva se confirmará únicamente al recibir el comprobante
+                    </p>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="text-center p-4 bg-gray-50 rounded-lg">
-          <p class="text-gray-700">
-            <strong>📱 WhatsApp:</strong> +54 249 465 1747
-          </p>
-          <p class="text-sm text-gray-600 mt-2">
-            Tu reserva se confirmará únicamente al recibir el comprobante
-          </p>
+            <!-- Footer del Modal -->
+            <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <div class="flex justify-between items-center">
+                    <p class="text-sm text-gray-600">
+                        ¿No se abrió WhatsApp? Puedes enviarlo manualmente al número de arriba
+                    </p>
+                    <button (click)="closeConfirmationModal()"
+                        class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                        Entendido
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <!-- Footer del Modal -->
-      <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
-        <div class="flex justify-between items-center">
-          <p class="text-sm text-gray-600">
-            ¿No se abrió WhatsApp? Puedes enviarlo manualmente al número de arriba
-          </p>
-          <button 
-            (click)="closeConfirmationModal()" 
-            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            Entendido
-          </button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>

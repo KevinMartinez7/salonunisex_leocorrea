@@ -476,4 +476,99 @@ ${formData.comentarios ? `💬 *Comentarios:* ${formData.comentarios}` : ''}
     this.showConfirmationModal = false;
     document.body.style.overflow = 'auto'; // Restaurar scroll
   }
+
+  // Métodos para copiar datos bancarios
+  copyToClipboard(text: string, type: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      // Crear notificación temporal
+      this.showCopyNotification(type);
+    }).catch(err => {
+      console.error('Error al copiar: ', err);
+      // Fallback para navegadores que no soportan clipboard API
+      this.fallbackCopyTextToClipboard(text, type);
+    });
+  }
+
+  copyCBU() {
+    this.copyToClipboard('0000003100021335046592', 'CBU/CVU');
+  }
+
+  copyAlias() {
+    this.copyToClipboard('salon.leocorrea', 'Alias');
+  }
+
+  private fallbackCopyTextToClipboard(text: string, type: string) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    
+    // Evitar scroll al fondo de la página en iOS
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        this.showCopyNotification(type);
+      }
+    } catch (err) {
+      console.error('Fallback: Error al copiar', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+
+  private showCopyNotification(type: string) {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.innerHTML = `
+      <div style="
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #10b981;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+      ">
+        ✓ ${type} copiado al portapapeles
+      </div>
+    `;
+    
+    // Agregar estilos de animación
+    if (!document.getElementById('copy-notification-styles')) {
+      const style = document.createElement('style');
+      style.id = 'copy-notification-styles';
+      style.textContent = `
+        @keyframes slideIn {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    document.body.appendChild(notification);
+
+    // Remover después de 3 segundos
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 3000);
+  }
 }
