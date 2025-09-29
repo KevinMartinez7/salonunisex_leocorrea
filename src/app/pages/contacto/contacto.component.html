@@ -150,9 +150,10 @@
           <div class="form-field">
             <label class="form-label">Selecciona la fecha de tu cita *</label>
             
-            <div class="custom-calendar">
-              <!-- Header del calendario -->
-              <div class="calendar-header">
+            <div class="calendar-container">
+              <div class="custom-calendar">
+                <!-- Header del calendario -->
+                <div class="calendar-header">
                 <button type="button" class="calendar-nav-button" (click)="previousMonth()">
                   <span>‹</span>
                 </button>
@@ -182,6 +183,7 @@
                   {{ day.day }}
                 </div>
               </div>
+            </div>
             </div>
             
             <!-- Mostrar fecha seleccionada de forma elegante -->
