@@ -10,12 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class GalleryPageComponent {
   cuts = [
-    { title: 'Corte Clásico', image: 'assets/gallery/corte7.jpg' },
-    { title: 'Fade Moderno', image: 'assets/gallery/corte8.jpg' },
-    { title: 'Corte con Diseño', image: 'assets/gallery/corte9.jpg' },
-    { title: 'Estilo Urbano', image: 'assets/gallery/corte10.jpg' },
-    { title: 'Corte Ejecutivo', image: 'assets/gallery/corte11.jpg' },
-    { title: 'Barba y Corte', image: 'assets/gallery/corte12.jpg' }
+    { title: '', image: 'assets/gallery/corte7.jpg' },
+    { title: '', image: 'assets/gallery/corte8.jpg' },
+    { title: '', image: 'assets/gallery/corte9.jpg' },
+    { title: '', image: 'assets/gallery/corte10.jpg' },
+    { title: '', image: 'assets/gallery/corte11.jpg' },
+    { title: '', image: 'assets/gallery/corte12.jpg' }
   ];
 
   selectedCut: any = null;
